@@ -1,7 +1,7 @@
-.navbar-container .navbar {
+.navbar {
   justify-content: center;
 }
-.navbar-container .navbar ul {
+.navbar nav {
   display: flex;
   gap: 2rem;
   list-style: none;

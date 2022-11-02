@@ -1,10 +1,8 @@
-.navbar-container {
-  .navbar {
-    justify-content: center;
-    ul {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
+.navbar {
+  justify-content: center;
+  nav {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
   }
 }
