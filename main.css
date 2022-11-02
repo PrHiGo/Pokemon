@@ -1,1 +1,8 @@
-/*# sourceMappingURL=main.css.map */
+.navbar-container .navbar {
+  justify-content: center;
+}
+.navbar-container .navbar ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}/*# sourceMappingURL=main.css.map */
