@@ -32,7 +32,6 @@ fetch(apiUrl) // Hämtar API
           const addBtn = document.createElement("button");
 
           cardContainer.classList.add("card-container");
-          // pokemonCard.classList.add("card", "pokemon-card-poison");
           cardTitle.classList.add("card-title");
           image.classList.add("card-img-top");
           info.classList.add("card-info");
@@ -47,9 +46,14 @@ fetch(apiUrl) // Hämtar API
           cardFooter.innerHTML = `<p>${pokemon.types[0].type.name}</p>`;
           addBtn.innerHTML = `Add`;
 
-          addBtn.addEventListener('click', (catchPokemon) => {
-            catchPokemon.currentTarget.id
-            myPokemon.push(pokemon.name);
+          addBtn.addEventListener('click', (pokemonpick) => {
+            const pokemonPick = {
+              cardTitle,
+              image,
+              type
+            }
+            myPokemon.push(pokemonPick);
+            console.log(myPokemon);
           })
 
           cardContainer.appendChild(pokemonCard);
