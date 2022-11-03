@@ -1,7 +1,7 @@
 const body = document.querySelector("body");
 const navbar = document.querySelector("navbar");
 const main = document.querySelector("main");
-const cardContainer = document.querySelector(".card-container");
+const products = document.querySelector(".product-container");
 const footer = document.querySelector("footer");
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
 const myPokemon = [];
@@ -20,32 +20,37 @@ fetch(apiUrl) // Hämtar API
         })
         .then((pokemon) => {
 
+          const cardContainer = document.createElement("div");
           const pokemonCard = document.createElement("div");
           const cardTitle = document.createElement("span");
           const image = document.createElement("div");
           const ulList = document.createElement("ul");
           const cardFooter = document.createElement("div");
-          const buyBtn = document.createElement("button");
+          const addBtn = document.createElement("button");
 
+          cardContainer.classList.add("card-container");
           pokemonCard.classList.add("card", "pokemon-card");
           cardTitle.classList.add("card-title");
           image.classList.add("card-img-top");
           ulList.classList.add("list-group", "list-group-flush");
           cardFooter.classList.add("card-footer");
-          buyBtn.classList.add("buybtn");
+          addBtn.classList.add("addbtn");
 
-          pokemonCard.innerHTML = ``;
-          cardTitle.innerHTML = `<h6>${pokemon.name}</h6><h6 class"hp">${pokemon.stats[0].base_stat}</h6>`;
           image.innerHTML = `<img src=${pokemon.sprites.front_default}>`;
+          cardTitle.innerHTML = `<h6>${pokemon.name}</h6><h6 xclass="hp">${pokemon.stats[0].base_stat} HP</h6>`;
+          addBtn.innerHTML = `Add`;
 
+          cardContainer.appendChild(pokemonCard);
+          cardContainer.appendChild(addBtn);
           pokemonCard.appendChild(cardTitle);
           pokemonCard.appendChild(image);
-          cardContainer.append(pokemonCard);
+          pokemonCard.appendChild(ulList);
+          products.appendChild(cardContainer);
 
+          console.log(pokemon);
         });
     }
   });
-
 
 
 

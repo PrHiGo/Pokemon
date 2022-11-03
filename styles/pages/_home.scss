@@ -1,68 +1,78 @@
-.card-container {
+.product-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0;
+  gap: 4rem;
+  align-items: center;
   max-width: 60rem;
-  gap: 5rem;
+  border: 1px solid red;
 
-  .pokemon-card {
-    width: 15rem;
-    height: 20rem;
-    border: 0.5rem solid gold;
-    align-items: center;
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    max-width: 15rem;
+    border: 1px solid green;
 
-    .card-img-top {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 12rem;
-      height: 8rem;
-      background-color: whitesmoke;
-      border: 2px solid silver;
-      img {
-        margin-bottom: auto;
-        width: 8rem;
-      }
+    .addbtn {
+      margin-top: 2rem;
     }
 
-    .card-title {
-      display: flex;
+    .pokemon-card {
+      width: 15rem;
+      height: 20rem;
+      border: 0.5rem solid rgb(255, 197, 51);
       align-items: center;
-      text-align: center;
-      width: 12rem;
-      margin-top: 0.5rem;
-      margin-bottom: 0;
-      border: 1px solid pink;
-      h6 {
-        margin-bottom: 0;
-      }
-      .hp {
-        margin-left: auto;
-      }
-    }
 
-    ul {
-      li {
+      .card-img-top {
         display: flex;
-        margin-left: 1rem;
-        p {
-          padding: 0.5rem;
-          margin-bottom: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 12rem;
+        height: 8rem;
+        background-color: whitesmoke;
+        border: 2px solid rgb(255, 197, 51);
+        img {
+          margin-bottom: auto;
+          width: 8rem;
         }
       }
-    }
 
-    .card-footer {
-      display: flex;
-      align-items: center;
-      h4 {
+      .card-title {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        width: 10rem;
+        margin-top: 0.5rem;
         margin-bottom: 0;
+        // border: 1px solid pink;
+        h6 {
+          margin-bottom: 0;
+        }
+        .hp {
+          margin-left: auto;
+        }
       }
-      .buybtn {
-        margin-left: 0.5rem;
-        margin-right: auto;
+
+      ul {
+        li {
+          display: flex;
+          margin-left: 1rem;
+          p {
+            padding: 0.5rem;
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .card-footer {
+        display: flex;
+        align-items: center;
+        h4 {
+          margin-bottom: 0;
+        }
       }
     }
   }
