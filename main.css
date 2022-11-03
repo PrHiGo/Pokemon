@@ -5,7 +5,6 @@
   gap: 4rem;
   align-items: center;
   max-width: 60rem;
-  border: 1px solid red;
 }
 .product-container .card-container {
   display: flex;
@@ -13,18 +12,11 @@
   justify-content: center;
   padding: 0;
   max-width: 15rem;
-  border: 1px solid green;
 }
 .product-container .card-container .addbtn {
   margin-top: 2rem;
 }
-.product-container .card-container .pokemon-card {
-  width: 15rem;
-  height: 20rem;
-  border: 0.5rem solid rgb(255, 197, 51);
-  align-items: center;
-}
-.product-container .card-container .pokemon-card .card-img-top {
+.product-container .card-container .card-img-top {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,38 +26,33 @@
   background-color: whitesmoke;
   border: 2px solid rgb(255, 197, 51);
 }
-.product-container .card-container .pokemon-card .card-img-top img {
+.product-container .card-container .card-img-top img {
   margin-bottom: auto;
   width: 8rem;
 }
-.product-container .card-container .pokemon-card .card-title {
+.product-container .card-container .card-title {
   display: flex;
   align-items: center;
   text-align: center;
   width: 10rem;
   margin-top: 0.5rem;
   margin-bottom: 0;
-  border: 1px solid pink;
 }
-.product-container .card-container .pokemon-card .card-title h6 {
+.product-container .card-container .card-title h6 {
   margin-bottom: 0;
 }
-.product-container .card-container .pokemon-card .card-title .hp {
+.product-container .card-container .card-title .hp {
   margin-left: auto;
 }
-.product-container .card-container .pokemon-card .card-info {
+.product-container .card-container .card-info {
   margin-top: 2rem;
 }
-.product-container .card-container .pokemon-card .cardfooter {
+.product-container .card-container .cardfooter {
   display: flex;
   align-items: center;
   margin-top: auto;
   margin-right: auto;
   padding: 0.5rem;
-}
-
-.grass {
-  background-color: green;
 }
 
 .navbar {
@@ -75,6 +62,126 @@
   display: flex;
   gap: 2rem;
   list-style: none;
+}
+
+.pokemon-card-fire {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(235, 81, 46);
+}
+
+.pokemon-card-water {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(0, 132, 255);
+}
+
+.pokemon-card-grass {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(54, 174, 2);
+}
+
+.pokemon-card-rock {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(133, 87, 41);
+}
+
+.pokemon-card-electric {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(255, 242, 0);
+}
+
+.pokemon-card-bug {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(135, 193, 28);
+}
+
+.pokemon-card-normal {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(205, 203, 203);
+}
+
+.pokemon-card-poison {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(158, 0, 158);
+}
+
+.pokemon-card-ground {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(133, 87, 41);
+}
+
+.pokemon-card-fairy {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(205, 203, 203);
+}
+
+.pokemon-card-fighting {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(147, 66, 44);
+}
+
+.pokemon-card-psychic {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(198, 0, 198);
+}
+
+.pokemon-card-ghost {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(109, 0, 109);
+}
+
+.pokemon-card-ice {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: rgb(0, 183, 255);
+}
+
+.pokemon-card-dragon {
+  width: 15rem;
+  height: 20rem;
+  border: 0.5rem solid rgb(255, 197, 51);
+  align-items: center;
+  background-color: silver;
 }
 
 /* Box sizing rules */
