@@ -5,33 +5,42 @@
   padding: 0;
   max-width: 60rem;
   gap: 5rem;
-  .product-card {
-    width: 10rem;
+
+  .pokemon-card {
+    width: 15rem;
     height: 20rem;
+    border: 0.5rem solid gold;
+    align-items: center;
 
     .card-img-top {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      width: 10rem;
-      height: 20rem;
+      width: 12rem;
+      height: 8rem;
+      background-color: whitesmoke;
+      border: 2px solid silver;
       img {
-        margin-bottom: 1rem;
-        width: 10rem;
-      }
-      h5 {
-        margin-top: 1rem;
         margin-bottom: auto;
+        width: 8rem;
       }
     }
 
     .card-title {
+      display: flex;
+      align-items: center;
       text-align: center;
-      font-size: 1rem;
-      font-weight: 1000;
+      width: 12rem;
+      margin-top: 0.5rem;
       margin-bottom: 0;
+      border: 1px solid pink;
+      h6 {
+        margin-bottom: 0;
+      }
+      .hp {
+        margin-left: auto;
+      }
     }
 
     ul {

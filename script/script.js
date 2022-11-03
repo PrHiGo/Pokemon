@@ -21,19 +21,24 @@ fetch(apiUrl) // Hämtar API
         .then((pokemon) => {
 
           const pokemonCard = document.createElement("div");
+          const cardTitle = document.createElement("span");
           const image = document.createElement("div");
           const ulList = document.createElement("ul");
           const cardFooter = document.createElement("div");
           const buyBtn = document.createElement("button");
 
-          pokemonCard.classList.add("card", "product-card");
+          pokemonCard.classList.add("card", "pokemon-card");
+          cardTitle.classList.add("card-title");
           image.classList.add("card-img-top");
           ulList.classList.add("list-group", "list-group-flush");
           cardFooter.classList.add("card-footer");
           buyBtn.classList.add("buybtn");
 
-          image.innerHTML = `<h5>${pokemon.name}</h5><img src=${pokemon.sprites.front_default}>`;
+          pokemonCard.innerHTML = ``;
+          cardTitle.innerHTML = `<h6>${pokemon.name}</h6><h6 class"hp">${pokemon.stats[0].base_stat}</h6>`;
+          image.innerHTML = `<img src=${pokemon.sprites.front_default}>`;
 
+          pokemonCard.appendChild(cardTitle);
           pokemonCard.appendChild(image);
           cardContainer.append(pokemonCard);
 
