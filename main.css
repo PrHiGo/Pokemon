@@ -1,7 +1,13 @@
+.body,
+main {
+  background-color: rgb(122, 122, 122);
+}
+
 .product-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 2rem;
   gap: 4rem;
   align-items: center;
   max-width: 60rem;
@@ -56,6 +62,7 @@
 }
 
 .navbar {
+  background-color: rgb(0, 64, 255);
   justify-content: center;
 }
 .navbar nav {

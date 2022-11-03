@@ -47,6 +47,11 @@ fetch(apiUrl) // Hämtar API
           cardFooter.innerHTML = `<p>${pokemon.types[0].type.name}</p>`;
           addBtn.innerHTML = `Add`;
 
+          addBtn.addEventListener('click', (catchPokemon) => {
+            catchPokemon.currentTarget.id
+            myPokemon.push(pokemon.name);
+          })
+
           cardContainer.appendChild(pokemonCard);
           cardContainer.appendChild(addBtn);
           pokemonCard.appendChild(cardTitle);
