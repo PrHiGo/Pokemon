@@ -100,6 +100,10 @@ fetch(apiUrl) // Hämtar API
           else if (type == "dragon") {
             pokemonCard.classList.add("card", "pokemon-card-dragon");
           }
+          else {
+            return;
+          }
+
         });
     }
   });
