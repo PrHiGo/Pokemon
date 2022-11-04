@@ -18,10 +18,10 @@ main {
     justify-content: center;
     padding: 0;
     max-width: 15rem;
-    // border: 1px solid green;
 
     .addbtn {
       margin-top: 2rem;
+      width: 4rem;
     }
 
     .card-img-top {
@@ -33,6 +33,7 @@ main {
       height: 8rem;
       background-color: whitesmoke;
       border: 2px solid rgb(255, 197, 51);
+
       img {
         margin-bottom: auto;
         width: 8rem;
@@ -67,4 +68,7 @@ main {
       padding: 0.5rem;
     }
   }
+}
+.pokemon-offcanvasbtn {
+  margin-left: auto;
 }

@@ -1,6 +1,5 @@
-function addType() {
-    const pokemonType = pokemon.types[0].type;
-    const type = pokemonType.name;
+function addType(type) {
+
     if (type == "fire") {
         pokemonCard.classList.add("card", "pokemon-card-fire");
     }
@@ -50,7 +49,7 @@ function addType() {
         return;
     }
 }
-export { addType }
+export default addType(type)
 
 
 

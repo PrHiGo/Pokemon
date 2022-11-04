@@ -20,6 +20,7 @@ fetch(apiUrl) // Hämtar API
         })
         .then((pokemon) => {
 
+          console.log(pokemon);
           const pokemonType = pokemon.types[0].type;
           const type = pokemonType.name;
 
