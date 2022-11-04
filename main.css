@@ -32,6 +32,7 @@ main {
   height: 8rem;
   background-color: whitesmoke;
   border: 2px solid rgb(255, 197, 51);
+  border-radius: 2px;
 }
 .product-container .card-container .card-img-top img {
   margin-bottom: auto;
@@ -42,13 +43,13 @@ main {
   align-items: center;
   text-align: center;
   width: 10rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0;
+  margin-bottom: 0.3rem;
 }
 .product-container .card-container .card-title h6 {
   margin-bottom: 0;
+  font-weight: 700;
 }
-.product-container .card-container .card-title .hp {
+.product-container .card-container .card-title h7 {
   margin-left: auto;
 }
 .product-container .card-container .card-info {
@@ -236,6 +237,11 @@ main {
   align-items: center;
   background-color: silver;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.pokelist {
+  display: flex;
+  gap: 2rem;
 }
 
 /* Box sizing rules */
