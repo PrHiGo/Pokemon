@@ -4,7 +4,13 @@ const main = document.querySelector("main");
 const products = document.querySelector(".product-container");
 const footer = document.querySelector("footer");
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
-const myPokemon = [];
+let myPokemon = [];
+if (localStorage.getItem("pokemonPick")) {
+  myPokemon = JSON.parse(localStorage.getItem("pokemonPick"));
+} else {
+  myPokemon = [];
+}
+console.log(myPokemon);
 
 fetch(apiUrl) // Hämtar API
   .then((response) => { // Väntar på svar
@@ -46,13 +52,14 @@ fetch(apiUrl) // Hämtar API
           cardFooter.innerHTML = `<p>${pokemon.types[0].type.name}</p>`;
           addBtn.innerHTML = `Add`;
 
-          addBtn.addEventListener('click', (pokemonpick) => {
+          addBtn.addEventListener('click', () => {
             const pokemonPick = {
               cardTitle,
               image,
               type
             }
             myPokemon.push(pokemonPick);
+            localStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
             console.log(myPokemon);
           })
 
