@@ -26,6 +26,7 @@ fetch(apiUrl) // Hämtar API
         })
         .then((pokemon) => {
 
+          console.log(pokemon);
           const pokemonType = pokemon.types[0].type;
           const type = pokemonType.name;
 
@@ -45,8 +46,8 @@ fetch(apiUrl) // Hämtar API
           addBtn.classList.add("addbtn");
 
           image.innerHTML = `<img src=${pokemon.sprites.front_default}>`;
-          cardTitle.innerHTML = `<h6>${pokemon.name}</h6><h6 class="hp">
-            ${pokemon.stats[0].base_stat} HP</h6>
+          cardTitle.innerHTML = `<h6>${pokemon.name}</h6><h7 class="hp">
+            ${pokemon.stats[0].base_stat} HP</h7>
           `;
           info.innerHTML = `<p>${pokemon.id}</p>`;
           cardFooter.innerHTML = `<p>${pokemon.types[0].type.name}</p>`;
@@ -54,13 +55,19 @@ fetch(apiUrl) // Hämtar API
 
           addBtn.addEventListener('click', () => {
             const pokemonPick = {
-              cardTitle,
-              image,
-              type
+              name: pokemon.name,
+              image: pokemon.sprites.front_default,
+              type: pokemon.types[0].type.name
             }
             myPokemon.push(pokemonPick);
             localStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
             console.log(myPokemon);
+            if (pokemonpick) {
+              const pokemonList = document.createElement("ul");
+              pokemonList.innerHTML = `<img src=${pokemonPick.image}>${pokemonPick.name}`;
+
+              document.querySelector(".pokelist").append(pokemonList);
+            }
           })
 
           cardContainer.appendChild(pokemonCard);
