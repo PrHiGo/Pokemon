@@ -5,6 +5,7 @@ const products = document.querySelector(".product-container");
 const footer = document.querySelector("footer");
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
 let myPokemon = [];
+
 if (localStorage.getItem("pokemonPick")) {
   myPokemon = JSON.parse(localStorage.getItem("pokemonPick"));
 } else {
@@ -25,8 +26,6 @@ fetch(apiUrl) // Hämtar API
           return response.json();
         })
         .then((pokemon) => {
-
-          console.log(pokemon);
           const pokemonType = pokemon.types[0].type;
           const type = pokemonType.name;
 
@@ -39,6 +38,7 @@ fetch(apiUrl) // Hämtar API
           const addBtn = document.createElement("button");
 
           cardContainer.classList.add("card-container");
+          pokemonCard.classList.add("card", type);
           cardTitle.classList.add("card-title");
           image.classList.add("card-img-top");
           info.classList.add("card-info");
@@ -62,12 +62,12 @@ fetch(apiUrl) // Hämtar API
             myPokemon.push(pokemonPick);
             localStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
             console.log(myPokemon);
-            if (pokemonpick) {
-              const pokemonList = document.createElement("ul");
-              pokemonList.innerHTML = `<img src=${pokemonPick.image}>${pokemonPick.name}`;
 
-              document.querySelector(".pokelist").append(pokemonList);
-            }
+            const pokemonList = document.createElement("ul");
+            pokemonList.innerHTML = `<img src=${pokemonPick.image}>${pokemonPick.name}`;
+
+            document.querySelector(".pokelist").append(pokemonList);
+
           })
 
           cardContainer.appendChild(pokemonCard);
@@ -77,56 +77,6 @@ fetch(apiUrl) // Hämtar API
           pokemonCard.appendChild(info);
           pokemonCard.appendChild(cardFooter);
           products.appendChild(cardContainer);
-
-          if (type == "fire") {
-            pokemonCard.classList.add("card", "pokemon-card-fire");
-          }
-          else if (type == "water") {
-            pokemonCard.classList.add("card", "pokemon-card-water");
-          }
-          else if (type == "grass") {
-            pokemonCard.classList.add("card", "pokemon-card-grass");
-          }
-          else if (type == "rock") {
-            pokemonCard.classList.add("card", "pokemon-card-rock");
-          }
-          else if (type == "electric") {
-            pokemonCard.classList.add("card", "pokemon-card-electric");
-          }
-          else if (type == "bug") {
-            pokemonCard.classList.add("card", "pokemon-card-bug");
-          }
-          else if (type == "normal") {
-            pokemonCard.classList.add("card", "pokemon-card-normal");
-          }
-          else if (type == "poison") {
-            pokemonCard.classList.add("card", "pokemon-card-poison");
-          }
-          else if (type == "ground") {
-            pokemonCard.classList.add("card", "pokemon-card-ground");
-          }
-          else if (type == "fairy") {
-            pokemonCard.classList.add("card", "pokemon-card-fairy");
-          }
-          else if (type == "fighting") {
-            pokemonCard.classList.add("card", "pokemon-card-fighting");
-          }
-          else if (type == "psychic") {
-            pokemonCard.classList.add("card", "pokemon-card-psychic");
-          }
-          else if (type == "ghost") {
-            pokemonCard.classList.add("card", "pokemon-card-ghost");
-          }
-          else if (type == "ice") {
-            pokemonCard.classList.add("card", "pokemon-card-ice");
-          }
-          else if (type == "dragon") {
-            pokemonCard.classList.add("card", "pokemon-card-dragon");
-          }
-          else {
-            return;
-          }
-
         });
     }
   });

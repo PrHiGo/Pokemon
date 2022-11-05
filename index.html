@@ -23,12 +23,22 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="script/pokemontypes.js"></script>
-    <script type="module" src="script/script.js"></script>
+    <script defer src="script/script.js"></script>
     <title>Pokemón top pick!</title>
   </head>
   <body>
     <div class="header">
+      <div class="pokemon-offcanvasbtn">
+        <button
+          class="btn pokemonlist"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample"
+          aria-controls="offcanvasExample"
+        >
+          Button with data-bs-target
+        </button>
+      </div>
       <h1>Pokémon</h1>
       <p>what's your pick</p>
     </div>
@@ -41,18 +51,6 @@
     </div>
     <main>
       <div class="container product-container"></div>
-      <div class="pokemon-offcanvasbtn">
-        <button
-          class="btn pokemonlist"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasExample"
-          aria-controls="offcanvasExample"
-        >
-          Button with data-bs-target
-        </button>
-      </div>
-
       <div
         class="offcanvas offcanvas-bottom"
         tabindex="-1"

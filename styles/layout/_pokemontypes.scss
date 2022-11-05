@@ -5,77 +5,77 @@ $box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: 0.5rem solid rgb(255, 197, 51);
   align-items: center;
 }
-.pokemon-card-fire {
+.fire {
   @include card-size();
   background-color: rgb(235, 81, 46);
   box-shadow: $box-shadow;
 }
-.pokemon-card-water {
+.card.water {
   @include card-size();
   background-color: rgb(0, 132, 255);
   box-shadow: $box-shadow;
 }
-.pokemon-card-grass {
+.grass {
   @include card-size();
   background-color: rgb(54, 174, 2);
   box-shadow: $box-shadow;
 }
-.pokemon-card-rock {
+.rock {
   @include card-size();
   background-color: rgb(133, 87, 41);
   box-shadow: $box-shadow;
 }
-.pokemon-card-electric {
+.electric {
   @include card-size();
   background-color: rgb(255, 242, 0);
   box-shadow: $box-shadow;
 }
-.pokemon-card-bug {
+.bug {
   @include card-size();
   background-color: rgb(135, 193, 28);
   box-shadow: $box-shadow;
 }
-.pokemon-card-normal {
+.normal {
   @include card-size();
   background-color: rgb(205, 203, 203);
   box-shadow: $box-shadow;
 }
-.pokemon-card-poison {
+.poison {
   @include card-size();
   background-color: rgb(158, 0, 158);
   box-shadow: $box-shadow;
 }
-.pokemon-card-ground {
+.ground {
   @include card-size();
   background-color: rgb(133, 87, 41);
   box-shadow: $box-shadow;
 }
-.pokemon-card-fairy {
+.fairy {
   @include card-size();
   background-color: rgb(205, 203, 203);
   box-shadow: $box-shadow;
 }
-.pokemon-card-fighting {
+.fighting {
   @include card-size();
   background-color: rgb(147, 66, 44);
   box-shadow: $box-shadow;
 }
-.pokemon-card-psychic {
+.psychic {
   @include card-size();
   background-color: rgb(198, 0, 198);
   box-shadow: $box-shadow;
 }
-.pokemon-card-ghost {
+.ghost {
   @include card-size();
   background-color: rgb(109, 0, 109);
   box-shadow: $box-shadow;
 }
-.pokemon-card-ice {
+.ice {
   @include card-size();
   background-color: rgb(0, 183, 255);
   box-shadow: $box-shadow;
 }
-.pokemon-card-dragon {
+.dragon {
   @include card-size();
   background-color: silver;
   box-shadow: $box-shadow;
