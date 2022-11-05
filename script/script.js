@@ -6,12 +6,21 @@ const footer = document.querySelector("footer");
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
 let myPokemon = [];
 
-if (localStorage.getItem("pokemonPick")) {
-  myPokemon = JSON.parse(localStorage.getItem("pokemonPick"));
+if (sessionStorage.getItem("pokemonPick")) {
+  myPokemon = JSON.parse(sessionStorage.getItem("pokemonPick"));
 } else {
   myPokemon = [];
 }
-console.log(myPokemon);
+
+// Skriver ut mina pokemon i min Lista från myPokemon array
+myPokemon.forEach(Obj => {
+  console.log(Obj.name);
+
+  const pokemonList = document.createElement("ul");
+  pokemonList.innerHTML = `<img src=${Obj.image}>${Obj.name}`;
+
+  document.querySelector(".pokelist").append(pokemonList);
+});
 
 fetch(apiUrl) // Hämtar API
   .then((response) => { // Väntar på svar
@@ -29,6 +38,7 @@ fetch(apiUrl) // Hämtar API
           const pokemonType = pokemon.types[0].type;
           const type = pokemonType.name;
 
+          //Skapar ett kort för varje pokemon
           const cardContainer = document.createElement("div");
           const pokemonCard = document.createElement("div");
           const cardTitle = document.createElement("span");
@@ -53,21 +63,16 @@ fetch(apiUrl) // Hämtar API
           cardFooter.innerHTML = `<p>${pokemon.types[0].type.name}</p>`;
           addBtn.innerHTML = `Add`;
 
+          //Funktion som skickar pokemon till array
           addBtn.addEventListener('click', () => {
             const pokemonPick = {
               name: pokemon.name,
               image: pokemon.sprites.front_default,
               type: pokemon.types[0].type.name
             }
+
             myPokemon.push(pokemonPick);
-            localStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
-            console.log(myPokemon);
-
-            const pokemonList = document.createElement("ul");
-            pokemonList.innerHTML = `<img src=${pokemonPick.image}>${pokemonPick.name}`;
-
-            document.querySelector(".pokelist").append(pokemonList);
-
+            sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
           })
 
           cardContainer.appendChild(pokemonCard);
