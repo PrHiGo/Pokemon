@@ -29,15 +29,15 @@
   <body>
     <div class="header">
       <div class="pokemon-offcanvasbtn">
-        <button
+        <a
           class="btn pokemonlist"
-          type="button"
           data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasExample"
+          href="#offcanvasExample"
+          role="button"
           aria-controls="offcanvasExample"
         >
-          Button with data-bs-target
-        </button>
+          Link with href
+        </a>
       </div>
       <h1>Pokémon</h1>
       <p>what's your pick</p>
@@ -58,7 +58,9 @@
         aria-labelledby="offcanvasExampleLabel"
       >
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+            My Pokemon´s
+          </h5>
           <button
             type="button"
             class="btn-close"

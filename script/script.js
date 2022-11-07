@@ -2,25 +2,36 @@ const body = document.querySelector("body");
 const navbar = document.querySelector("navbar");
 const main = document.querySelector("main");
 const products = document.querySelector(".product-container");
+let offcanvasBody = document.querySelector(".offcanvas-body");
+let pokelist = document.querySelector(".pokelist");
 const footer = document.querySelector("footer");
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
 let myPokemon = [];
 
+// Om myPokemon har sparade objekt så återskapas dessa i min pokemon lista
 if (sessionStorage.getItem("pokemonPick")) {
   myPokemon = JSON.parse(sessionStorage.getItem("pokemonPick"));
+
+  const removeAllbtn = document.createElement("button");
+  removeAllbtn.innerHTML = `Reset List`;
+  removeAllbtn.addEventListener('click', () => {
+    myPokemon.length = 0;
+    sessionStorage.removeItem("pokemonPick");
+    location.reload();
+  })
+
+  offcanvasBody.append(removeAllbtn);
+
+  myPokemon.forEach(Obj => {
+    const pokemonList = document.createElement("ul");
+    pokemonList.innerHTML = `<img src=${Obj.image}>${Obj.name}`;
+
+    pokelist.append(pokemonList);
+  });
+
 } else {
   myPokemon = [];
 }
-
-// Skriver ut mina pokemon i min Lista från myPokemon array
-myPokemon.forEach(Obj => {
-  console.log(Obj.name);
-
-  const pokemonList = document.createElement("ul");
-  pokemonList.innerHTML = `<img src=${Obj.image}>${Obj.name}`;
-
-  document.querySelector(".pokelist").append(pokemonList);
-});
 
 fetch(apiUrl) // Hämtar API
   .then((response) => { // Väntar på svar
@@ -70,9 +81,30 @@ fetch(apiUrl) // Hämtar API
               image: pokemon.sprites.front_default,
               type: pokemon.types[0].type.name
             }
+            if (myPokemon.length <= 0) {
+              myPokemon.push(pokemonPick);
+              sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
 
-            myPokemon.push(pokemonPick);
-            sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
+              const pokemonList = document.createElement("ul");
+              pokemonList.innerHTML = `<img src=${pokemonPick.image}>${pokemonPick.name}`;
+
+              pokelist.append(pokemonList);
+
+              if (myPokemon.length == 1) {
+                const removeAllbtn = document.createElement("button");
+                removeAllbtn.innerHTML = `Reset List`;
+                removeAllbtn.addEventListener('click', () => {
+                  myPokemon.length = 0;
+                  sessionStorage.removeItem("pokemonPick");
+                  location.reload();
+
+                })
+                offcanvasBody.append(removeAllbtn);
+              }
+            }
+            else {
+              alert("You allredy have picked 6 Pokémons!");
+            }
           })
 
           cardContainer.appendChild(pokemonCard);
@@ -85,6 +117,4 @@ fetch(apiUrl) // Hämtar API
         });
     }
   });
-
-
 
