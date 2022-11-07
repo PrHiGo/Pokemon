@@ -81,7 +81,7 @@ fetch(apiUrl) // Hämtar API
               image: pokemon.sprites.front_default,
               type: pokemon.types[0].type.name
             }
-            if (myPokemon.length <= 0) {
+            if (myPokemon.length <= 5) {
               myPokemon.push(pokemonPick);
               sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
 
