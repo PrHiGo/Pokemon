@@ -11,7 +11,7 @@ let myPokemon = [];
 // Om myPokemon har sparade objekt så återskapas dessa i min pokemon lista
 if (sessionStorage.getItem("pokemonPick")) {
   myPokemon = JSON.parse(sessionStorage.getItem("pokemonPick"));
-
+  console.log(myPokemon);
   const removeAllbtn = document.createElement("button");
   removeAllbtn.innerHTML = `Reset List`;
   removeAllbtn.addEventListener('click', () => {
@@ -94,14 +94,6 @@ fetch(apiUrl) // Hämtar API
               const pokemonList = document.createElement("ul");
               pokemonList.innerHTML = `<img src=${pokemonPick.image}>${pokemonPick.name}`;
 
-              const removeBtn = document.createElement("button");
-              removeBtn.classList.add(pokemonPick.name)
-              removeBtn.innerHTML = `Remove`
-              removeBtn.addEventListener('click', (e) => {
-                console.log(e.currentTarget);
-              })
-
-              pokelist.appendChild(removeBtn)
               pokelist.appendChild(pokemonList);
               if (myPokemon.length == 1) {
                 const removeAllbtn = document.createElement("button");
