@@ -2,10 +2,10 @@ const body = document.querySelector("body");
 const navbar = document.querySelector("navbar");
 const main = document.querySelector("main");
 const products = document.querySelector(".product-container");
-let offcanvasBody = document.querySelector(".offcanvas-body");
-let pokelist = document.querySelector(".pokelist");
 const footer = document.querySelector("footer");
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
+let offcanvasBody = document.querySelector(".offcanvas-body");
+let pokelist = document.querySelector(".pokelist");
 let myPokemon = [];
 
 // Om myPokemon har sparade objekt så återskapas dessa i min pokemon lista
@@ -19,7 +19,6 @@ if (sessionStorage.getItem("pokemonPick")) {
     sessionStorage.removeItem("pokemonPick");
     location.reload();
   })
-
   offcanvasBody.append(removeAllbtn);
 
   myPokemon.forEach(Obj => {
@@ -28,7 +27,6 @@ if (sessionStorage.getItem("pokemonPick")) {
 
     pokelist.append(pokemonList);
   });
-
 } else {
   myPokemon = [];
 }
@@ -48,6 +46,17 @@ fetch(apiUrl) // Hämtar API
         .then((pokemon) => {
           const pokemonType = pokemon.types[0].type;
           const type = pokemonType.name;
+          const pokemonPick = {
+            name: pokemon.name,
+            image: pokemon.sprites.front_default,
+            health: pokemon.stats[0].base_stat,
+            type: pokemon.types[0].type.name,
+            stats: {
+              attack: pokemon.stats[1].base_stat,
+              defense: pokemon.stats[2].base_stat,
+              speed: pokemon.stats[5].base_stat
+            }
+          }
 
           //Skapar ett kort för varje pokemon
           const cardContainer = document.createElement("div");
@@ -66,21 +75,18 @@ fetch(apiUrl) // Hämtar API
           cardFooter.classList.add("cardfooter");
           addBtn.classList.add("addbtn");
 
-          image.innerHTML = `<img src=${pokemon.sprites.front_default}>`;
-          cardTitle.innerHTML = `<h6>${pokemon.name}</h6><h7 class="hp">
-            ${pokemon.stats[0].base_stat} HP</h7>
+          image.innerHTML = `<img src=${pokemonPick.image}>`;
+          cardTitle.innerHTML = `<h6>${pokemonPick.name}</h6><h7 class="hp">
+            ${pokemonPick.health} HP</h7>
           `;
-          info.innerHTML = `<p>${pokemon.id}</p>`;
-          cardFooter.innerHTML = `<p>${pokemon.types[0].type.name}</p>`;
+          info.innerHTML = `<p>Attack: ${pokemonPick.stats.attack}</p>
+          <p>Defense: ${pokemonPick.stats.defense}</p>
+          <p>Speed: ${pokemonPick.stats.speed}</p>`;
+          cardFooter.innerHTML = ``;
           addBtn.innerHTML = `Add`;
 
           //Funktion som skickar pokemon till array
           addBtn.addEventListener('click', () => {
-            const pokemonPick = {
-              name: pokemon.name,
-              image: pokemon.sprites.front_default,
-              type: pokemon.types[0].type.name
-            }
             if (myPokemon.length <= 5) {
               myPokemon.push(pokemonPick);
               sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
@@ -88,8 +94,15 @@ fetch(apiUrl) // Hämtar API
               const pokemonList = document.createElement("ul");
               pokemonList.innerHTML = `<img src=${pokemonPick.image}>${pokemonPick.name}`;
 
-              pokelist.append(pokemonList);
+              const removeBtn = document.createElement("button");
+              removeBtn.classList.add(pokemonPick.name)
+              removeBtn.innerHTML = `Remove`
+              removeBtn.addEventListener('click', (e) => {
+                console.log(e.currentTarget);
+              })
 
+              pokelist.appendChild(removeBtn)
+              pokelist.appendChild(pokemonList);
               if (myPokemon.length == 1) {
                 const removeAllbtn = document.createElement("button");
                 removeAllbtn.innerHTML = `Reset List`;
@@ -97,13 +110,12 @@ fetch(apiUrl) // Hämtar API
                   myPokemon.length = 0;
                   sessionStorage.removeItem("pokemonPick");
                   location.reload();
-
                 })
-                offcanvasBody.append(removeAllbtn);
+                offcanvasBody.appendChild(removeAllbtn);
               }
             }
             else {
-              alert("You allredy have picked 6 Pokémons!");
+              alert("You alredy have picked 6 Pokémons!");
             }
           })
 
