@@ -241,7 +241,7 @@ main {
 
 .pokelist {
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
 }
 
 /* Box sizing rules */
