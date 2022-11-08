@@ -22,10 +22,22 @@ if (sessionStorage.getItem("pokemonPick")) {
   offcanvasBody.append(removeAllbtn);
 
   myPokemon.forEach(Obj => {
-    const pokemonList = document.createElement("ul");
+    const pokemonUl = document.createElement("ul");
+    const pokemonList = document.createElement("li");
+    const removeBtn = document.createElement("button");
+
+    removeBtn.innerHTML = `Remove`;
     pokemonList.innerHTML = `<img src=${Obj.image}>${Obj.name}`;
 
-    pokelist.append(pokemonList);
+    removeBtn.addEventListener('click', (item) => {
+      const erase = item.target
+      erase.parentElement.remove()
+      myPokemon.splice(myPokemon.indexOf(item), 1);
+      sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
+    })
+    pokemonUl.appendChild(pokemonList);
+    pokemonUl.appendChild(removeBtn);
+    pokelist.append(pokemonUl);
   });
 } else {
   myPokemon = [];
@@ -87,14 +99,26 @@ fetch(apiUrl) // Hämtar API
 
           //Funktion som skickar pokemon till array
           addBtn.addEventListener('click', () => {
+            const pokemonUl = document.createElement("ul");
             if (myPokemon.length <= 5) {
               myPokemon.push(pokemonPick);
-              sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
+              console.log(myPokemon);
 
-              const pokemonList = document.createElement("ul");
+              const pokemonList = document.createElement("li");
+              const removeBtn = document.createElement("button");
               pokemonList.innerHTML = `<img src=${pokemonPick.image}>${pokemonPick.name}`;
+              removeBtn.innerHTML = `Remove`;
 
-              pokelist.appendChild(pokemonList);
+              removeBtn.addEventListener('click', (event) => {
+                for (let pokemon of myPokemon) {
+                  console.log(pokemon);
+                  // myPokemon.splice(myPokemon.indexOf(item), 1);
+                  // sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
+                }
+                // const erase = event.target
+                // erase.parentElement.remove()
+              })
+
               if (myPokemon.length == 1) {
                 const removeAllbtn = document.createElement("button");
                 removeAllbtn.innerHTML = `Reset List`;
@@ -105,6 +129,10 @@ fetch(apiUrl) // Hämtar API
                 })
                 offcanvasBody.appendChild(removeAllbtn);
               }
+              pokemonUl.appendChild(pokemonList);
+              pokemonUl.appendChild(removeBtn);
+              pokelist.appendChild(pokemonUl);
+              sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
             }
             else {
               alert("You alredy have picked 6 Pokémons!");
