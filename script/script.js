@@ -1,9 +1,9 @@
-const body = document.querySelector("body");
-const navbar = document.querySelector("navbar");
-const main = document.querySelector("main");
+const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
 const products = document.querySelector(".product-container");
 const footer = document.querySelector("footer");
-const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
+const navbar = document.querySelector("navbar");
+const body = document.querySelector("body");
+const main = document.querySelector("main");
 let offcanvasBody = document.querySelector(".offcanvas-body");
 let pokelist = document.querySelector(".pokelist");
 let myPokemon = [];
@@ -15,14 +15,14 @@ if (sessionStorage.getItem("pokemonPick")) {
   myPokemon.forEach(Obj => {
     const pokemonUl = document.createElement("ul");
     const pokemonList = document.createElement("li");
-    pokemonList.innerHTML = `<img src=${Obj.image}><p>${Obj.name}</p>`;
-
     let removeBtn = document.createElement("button");
     removeBtn.innerHTML = `Remove`;
     removeBtn.addEventListener(`click`, () => {
       removeBtn.parentElement.remove();
       myPokemon.splice(myPokemon.indexOf(Obj), 1);
     })
+
+    pokemonList.innerHTML = `<img src=${Obj.image}><p>${Obj.name}</p>`;
 
     pokemonUl.appendChild(pokemonList);
     pokemonUl.appendChild(removeBtn);
@@ -46,8 +46,6 @@ fetch(apiUrl) // Hämtar API
           return response.json();
         })
         .then((pokemon) => {
-          const pokemonType = pokemon.types[0].type;
-          const type = pokemonType.name;
           const pokemonPick = {
             name: pokemon.name,
             image: pokemon.sprites.front_default,
@@ -59,8 +57,8 @@ fetch(apiUrl) // Hämtar API
               speed: pokemon.stats[5].base_stat
             }
           }
-
-          //Skapar ett kort för varje pokemon
+          const pokemonType = pokemon.types[0].type;
+          const type = pokemonType.name;
           const cardContainer = document.createElement("div");
           const pokemonCard = document.createElement("div");
           const cardTitle = document.createElement("span");
@@ -77,17 +75,6 @@ fetch(apiUrl) // Hämtar API
           cardFooter.classList.add("cardfooter");
           addBtn.classList.add("addbtn");
 
-          image.innerHTML = `<img src=${pokemonPick.image}>`;
-          cardTitle.innerHTML = `<h6>${pokemonPick.name}</h6><h7 class="hp">
-            ${pokemonPick.health} HP</h7>
-          `;
-          info.innerHTML = `<p>Attack: ${pokemonPick.stats.attack}</p>
-          <p>Defense: ${pokemonPick.stats.defense}</p>
-          <p>Speed: ${pokemonPick.stats.speed}</p>`;
-          cardFooter.innerHTML = ``;
-          addBtn.innerHTML = `Add`;
-
-          //Funktion som skickar pokemon till array
           addBtn.addEventListener('click', () => {
             const pokemonUl = document.createElement("ul");
             if (myPokemon.length <= 5) {
@@ -110,6 +97,16 @@ fetch(apiUrl) // Hämtar API
               alert("You alredy have picked 6 Pokémons!");
             }
           })
+
+          image.innerHTML = `<img src=${pokemonPick.image}>`;
+          cardTitle.innerHTML = `<h6>${pokemonPick.name}</h6><h7 class="hp">
+          ${pokemonPick.health} HP</h7>
+          `;
+          info.innerHTML = `<p>Attack: ${pokemonPick.stats.attack}</p>
+          <p>Defense: ${pokemonPick.stats.defense}</p>
+          <p>Speed: ${pokemonPick.stats.speed}</p>
+          `;
+          addBtn.innerHTML = `Add`;
 
           cardContainer.appendChild(pokemonCard);
           cardContainer.appendChild(addBtn);
