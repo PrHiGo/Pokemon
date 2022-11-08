@@ -243,6 +243,26 @@ main {
   display: flex;
   flex-direction: column;
 }
+.pokelist ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+}
+.pokelist ul li {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  text-align: center;
+}
+.pokelist ul li img {
+  margin-right: auto;
+}
+.pokelist ul button {
+  height: 2rem;
+  margin-left: auto;
+}
 
 /* Box sizing rules */
 *,

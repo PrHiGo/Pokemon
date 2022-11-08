@@ -15,7 +15,7 @@ if (sessionStorage.getItem("pokemonPick")) {
   myPokemon.forEach(Obj => {
     const pokemonUl = document.createElement("ul");
     const pokemonList = document.createElement("li");
-    pokemonList.innerHTML = `<img src=${Obj.image}>${Obj.name}`;
+    pokemonList.innerHTML = `<img src=${Obj.image}><p>${Obj.name}</p>`;
 
     let removeBtn = document.createElement("button");
     removeBtn.innerHTML = `Remove`;
@@ -24,8 +24,8 @@ if (sessionStorage.getItem("pokemonPick")) {
       myPokemon.splice(myPokemon.indexOf(Obj), 1);
     })
 
-    pokemonList.appendChild(removeBtn);
     pokemonUl.appendChild(pokemonList);
+    pokemonUl.appendChild(removeBtn);
     pokelist.append(pokemonUl);
   });
 
@@ -92,7 +92,7 @@ fetch(apiUrl) // Hämtar API
             const pokemonUl = document.createElement("ul");
             if (myPokemon.length <= 5) {
               const pokemonList = document.createElement("li");
-              pokemonList.innerHTML = `<img src=${pokemonPick.image}>${pokemonPick.name}`;
+              pokemonList.innerHTML = `<img src=${pokemonPick.image}><p>${pokemonPick.name}</p>`;
 
               let removeBtn = document.createElement("button");
               removeBtn.innerHTML = `Remove`;
@@ -101,7 +101,7 @@ fetch(apiUrl) // Hämtar API
                 myPokemon.splice(myPokemon.indexOf(pokemonPick), 1);
               })
               pokemonUl.appendChild(pokemonList);
-              pokemonList.appendChild(removeBtn);
+              pokemonUl.appendChild(removeBtn);
               pokelist.appendChild(pokemonUl);
               myPokemon.push(pokemonPick);
               sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));

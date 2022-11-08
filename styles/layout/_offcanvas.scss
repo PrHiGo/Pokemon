@@ -1,4 +1,24 @@
 .pokelist {
   display: flex;
   flex-direction: column;
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0;
+    list-style: none;
+    li {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      text-align: center;
+      img {
+        margin-right: auto;
+      }
+    }
+    button {
+      height: 2rem;
+      margin-left: auto;
+    }
+  }
 }
