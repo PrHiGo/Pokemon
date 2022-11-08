@@ -29,15 +29,6 @@ if (sessionStorage.getItem("pokemonPick")) {
     pokelist.append(pokemonUl);
   });
 
-  const removeAllbtn = document.createElement("button");
-  removeAllbtn.innerHTML = `Reset List`;
-  removeAllbtn.addEventListener('click', () => {
-    myPokemon.length = 0;
-    sessionStorage.removeItem("pokemonPick");
-    location.reload();
-  })
-  offcanvasBody.append(removeAllbtn);
-
 } else {
   myPokemon = [];
 }
@@ -109,17 +100,6 @@ fetch(apiUrl) // Hämtar API
                 removeBtn.parentElement.remove();
                 myPokemon.splice(myPokemon.indexOf(pokemonPick), 1);
               })
-
-              if (myPokemon.length <= 0) {
-                const removeAllbtn = document.createElement("button");
-                removeAllbtn.innerHTML = `Reset List`;
-                removeAllbtn.addEventListener('click', () => {
-                  myPokemon.length = 0;
-                  sessionStorage.removeItem("pokemonPick");
-                  location.reload();
-                })
-                offcanvasBody.appendChild(removeAllbtn);
-              }
               pokemonUl.appendChild(pokemonList);
               pokemonList.appendChild(removeBtn);
               pokelist.appendChild(pokemonUl);
@@ -142,3 +122,13 @@ fetch(apiUrl) // Hämtar API
     }
   });
 
+
+const removeAllbtn = document.createElement("button");
+removeAllbtn.innerHTML = `Reset List`;
+removeAllbtn.addEventListener('click', () => {
+  myPokemon.length = 0;
+  sessionStorage.removeItem("pokemonPick");
+  location.reload();
+})
+
+offcanvasBody.appendChild(removeAllbtn);
