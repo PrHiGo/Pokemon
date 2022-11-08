@@ -11,7 +11,24 @@ let myPokemon = [];
 // Om myPokemon har sparade objekt så återskapas dessa i min pokemon lista
 if (sessionStorage.getItem("pokemonPick")) {
   myPokemon = JSON.parse(sessionStorage.getItem("pokemonPick"));
-  console.log(myPokemon);
+
+  myPokemon.forEach(Obj => {
+    const pokemonUl = document.createElement("ul");
+    const pokemonList = document.createElement("li");
+    pokemonList.innerHTML = `<img src=${Obj.image}>${Obj.name}`;
+
+    let removeBtn = document.createElement("button");
+    removeBtn.innerHTML = `Remove`;
+    removeBtn.addEventListener(`click`, () => {
+      removeBtn.parentElement.remove();
+      myPokemon.splice(myPokemon.indexOf(Obj), 1);
+    })
+
+    pokemonList.appendChild(removeBtn);
+    pokemonUl.appendChild(pokemonList);
+    pokelist.append(pokemonUl);
+  });
+
   const removeAllbtn = document.createElement("button");
   removeAllbtn.innerHTML = `Reset List`;
   removeAllbtn.addEventListener('click', () => {
@@ -21,24 +38,6 @@ if (sessionStorage.getItem("pokemonPick")) {
   })
   offcanvasBody.append(removeAllbtn);
 
-  myPokemon.forEach(Obj => {
-    const pokemonUl = document.createElement("ul");
-    const pokemonList = document.createElement("li");
-    const removeBtn = document.createElement("button");
-
-    removeBtn.innerHTML = `Remove`;
-    pokemonList.innerHTML = `<img src=${Obj.image}>${Obj.name}`;
-
-    removeBtn.addEventListener('click', (item) => {
-      const erase = item.target
-      erase.parentElement.remove()
-      myPokemon.splice(myPokemon.indexOf(item), 1);
-      sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
-    })
-    pokemonUl.appendChild(pokemonList);
-    pokemonUl.appendChild(removeBtn);
-    pokelist.append(pokemonUl);
-  });
 } else {
   myPokemon = [];
 }
@@ -101,25 +100,17 @@ fetch(apiUrl) // Hämtar API
           addBtn.addEventListener('click', () => {
             const pokemonUl = document.createElement("ul");
             if (myPokemon.length <= 5) {
-              myPokemon.push(pokemonPick);
-              console.log(myPokemon);
-
               const pokemonList = document.createElement("li");
-              const removeBtn = document.createElement("button");
               pokemonList.innerHTML = `<img src=${pokemonPick.image}>${pokemonPick.name}`;
-              removeBtn.innerHTML = `Remove`;
 
-              removeBtn.addEventListener('click', (event) => {
-                for (let pokemon of myPokemon) {
-                  console.log(pokemon);
-                  // myPokemon.splice(myPokemon.indexOf(item), 1);
-                  // sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
-                }
-                // const erase = event.target
-                // erase.parentElement.remove()
+              let removeBtn = document.createElement("button");
+              removeBtn.innerHTML = `Remove`;
+              removeBtn.addEventListener(`click`, () => {
+                removeBtn.parentElement.remove();
+                myPokemon.splice(myPokemon.indexOf(pokemonPick), 1);
               })
 
-              if (myPokemon.length == 1) {
+              if (myPokemon.length <= 0) {
                 const removeAllbtn = document.createElement("button");
                 removeAllbtn.innerHTML = `Reset List`;
                 removeAllbtn.addEventListener('click', () => {
@@ -130,8 +121,9 @@ fetch(apiUrl) // Hämtar API
                 offcanvasBody.appendChild(removeAllbtn);
               }
               pokemonUl.appendChild(pokemonList);
-              pokemonUl.appendChild(removeBtn);
+              pokemonList.appendChild(removeBtn);
               pokelist.appendChild(pokemonUl);
+              myPokemon.push(pokemonPick);
               sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
             }
             else {
