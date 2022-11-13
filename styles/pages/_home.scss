@@ -1,6 +1,12 @@
-.body,
+body,
 main {
   background-color: rgb(122, 122, 122);
+}
+.placeholder-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
 }
 .product-container {
   display: flex;

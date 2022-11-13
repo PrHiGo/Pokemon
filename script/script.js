@@ -20,6 +20,7 @@ if (sessionStorage.getItem("pokemonPick")) {
     removeBtn.addEventListener(`click`, () => {
       removeBtn.parentElement.remove();
       myPokemon.splice(myPokemon.indexOf(Obj), 1);
+      sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
     })
 
     pokemonList.innerHTML = `<img src=${Obj.image}><p>${Obj.name}</p>`;
@@ -76,6 +77,7 @@ fetch(apiUrl) // Hämtar API
           addBtn.classList.add("addbtn");
 
           addBtn.addEventListener('click', () => {
+
             const pokemonUl = document.createElement("ul");
             if (myPokemon.length <= 5) {
               const pokemonList = document.createElement("li");
@@ -86,6 +88,7 @@ fetch(apiUrl) // Hämtar API
               removeBtn.addEventListener(`click`, () => {
                 removeBtn.parentElement.remove();
                 myPokemon.splice(myPokemon.indexOf(pokemonPick), 1);
+                sessionStorage.setItem("pokemonPick", JSON.stringify(myPokemon));
               })
               pokemonUl.appendChild(pokemonList);
               pokemonUl.appendChild(removeBtn);
@@ -119,7 +122,6 @@ fetch(apiUrl) // Hämtar API
     }
   });
 
-
 const removeAllbtn = document.createElement("button");
 removeAllbtn.innerHTML = `Reset List`;
 removeAllbtn.addEventListener('click', () => {
@@ -127,5 +129,5 @@ removeAllbtn.addEventListener('click', () => {
   sessionStorage.removeItem("pokemonPick");
   location.reload();
 })
-
+offcanvasBody.appendChild(pokemonCounter);
 offcanvasBody.appendChild(removeAllbtn);

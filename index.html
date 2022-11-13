@@ -28,36 +28,35 @@
   </head>
   <body>
     <div class="header">
-      <div class="pokemon-offcanvasbtn">
-        <a
-          class="btn pokemonlist"
-          data-bs-toggle="offcanvas"
-          href="#offcanvasExample"
-          role="button"
-          aria-controls="offcanvasExample"
-        >
-          Link with href
-        </a>
-      </div>
+      <div class="pokemon-offcanvasbtn"></div>
       <h1>PoKéMoN</h1>
     </div>
     <div class="navbar">
       <nav>
         <a href="index.html" aria-label="current page">Home</a>
         <a href="/pages/placeholder.html">JSON Placeholder</a>
+        <a
+          href="#offcanvasPokemon"
+          data-bs-toggle="offcanvas"
+          aria-controls="offcanvasPokemon"
+          >Pokemón-List</a
+        >
       </nav>
     </div>
     <main>
       <div class="container product-container"></div>
       <div
         class="offcanvas offcanvas-end"
+        data-bs-scroll="true"
+        data-bs-backdrop="false"
+        data-bs-target="#staticBackdrop"
         tabindex="-1"
-        id="offcanvasExample"
-        aria-labelledby="offcanvasExampleLabel"
+        id="offcanvasPokemon"
+        aria-labelledby="offcanvasPokemonLabel"
       >
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-            My Pokemon´s
+          <h5 class="offcanvas-title" id="offcanvasPokemonLabel">
+            My Pokemon's
           </h5>
           <button
             type="button"
@@ -71,6 +70,6 @@
         </div>
       </div>
     </main>
-    <footer>This is the footer</footer>
+    <footer></footer>
   </body>
 </html>

@@ -1,6 +1,13 @@
-.body,
+body,
 main {
   background-color: rgb(122, 122, 122);
+}
+
+.placeholder-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
 }
 
 .product-container {
@@ -237,6 +244,10 @@ main {
   align-items: center;
   background-color: silver;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#offcanvasPokemon {
+  background-color: rgb(206, 143, 49);
 }
 
 .pokelist {
